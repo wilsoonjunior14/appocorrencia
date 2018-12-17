@@ -1,0 +1,51 @@
+<!--<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>-->
+
+<ion-content class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <img padding style="height: 150px;position: fixed; left:0;right:0;margin-left:auto;margin-right:auto"  src="../assets/imgs/logo.png" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3 class="title l_panel_login">ParticipaSol</h3>
+
+  <ion-list padding>
+    <ion-item class="l_input">
+      <ion-label>Email:</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding class="l_adjust">
+    <ion-item class="l_input">
+      <ion-label>Senha:</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="l_adjust">
+    <ion-item style="background-color: transparent">
+      <button style="height:40px" full ion-button  color="secondary" (click)="entrar()">Entrar <ion-icon name="send" class="l_right"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<div class="l_footer">
+  <ion-list class="l_footer_list" style="border-right: 1px solid gray">
+    <ion-item class="l_footer_list_item">Cadastro</ion-item>
+  </ion-list>
+
+  <ion-list class="l_footer_list">
+    <ion-item class="l_footer_list_item">Esqueceu a senha</ion-item>
+  </ion-list>
+</div>

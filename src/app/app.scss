@@ -1,0 +1,117 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.title{
+  margin-top: -20px;
+  text-align: center;
+}
+
+.background{
+  background-image: url('../assets/imgs/bglogin.png');
+}
+
+.background-internal{
+  background-image: url('../assets/imgs/bginterno.png');
+}
+
+.ion-footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.toolbar-title-md{
+  margin-top: 15px;
+}
+
+.toolbar-background{
+  background-color: #e7c700 !important;
+}
+
+.list-ios, .item{
+  border: none !important;
+}
+
+.grid{
+  padding: 0;
+}
+
+.card{
+  cursor: pointer !important;
+}
+
+.l_button_exit{
+  text-align: left;
+}
+
+.l_card_menu{
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+.l_card_profile{
+  height: 60px;
+  text-align: left;
+}
+
+.l_right{
+  margin-left: 15px;
+  font-size: 1.8em;
+}
+
+.l_left{
+  margin-right: 15px;
+  font-size: 1.8em;
+}
+
+.text-white{
+  color: white !important;
+}
+
+.l_green{
+  background-color: #71bc89;
+  color: white;
+}
+
+.l_red{
+  background-color: #ff7268;
+  color: white;
+}
+
+.l_orange{
+  background-color: #ffac68;
+  color: white;
+}
+
+.l_blue{
+  background-color: #68bdff;
+  color: white;
+}
+
+.l_icone_card{
+  font-size: 2.5em !important;
+}
+
+.l_footer{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
