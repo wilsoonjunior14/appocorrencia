@@ -27,13 +27,21 @@
                 <p><b>Nome:</b> Fco Wilson R Junior</p>
                 <p><b>Email:</b> wjunior_msn@hotmail.com</p>
               </ion-col>
+              <ion-col *ngIf="icon" col-1 style="margin-top:3px"><p><ion-icon color="secondary" name="wifi" style="font-size: 1.8em"></ion-icon></p></ion-col>
+              <ion-col *ngIf="!icon" col-1 style="margin-top:3px"><p><ion-icon color="danger" name="close-circle" style="font-size: 1.8em"></ion-icon></p></ion-col>
+              <ion-col col-11 style="margin-top:-5px">
+                <p *ngIf="icon" color="secondary"><b>GPS ativado</b></p>
+                <p *ngIf="icon"><b>Precisão:</b> {{posicao}} metros</p>
+                <p *ngIf="!icon" color="danger"><b>GPS inativo</b></p>
+                <p *ngIf="!icon">Não foi possível detectar GPS</p>
+              </ion-col>
             </ion-row>
           </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col col-6>
-        <ion-card class="l_card_menu l_green">
+        <ion-card (click)="novaOcorrencia()" class="l_card_menu l_green">
             <ion-card-content>
               <ion-icon class="l_icone_card" name="camera" large></ion-icon>
               <p class="text-white">Nova Ocorrência</p>

@@ -6,21 +6,26 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { InicioPage } from '../pages/inicio/inicio';
 import { ListPage } from '../pages/list/list';
+import { OcorrenciaPage } from '../pages/ocorrencia/ocorrencia';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HTTP } from '@ionic-native/http';
 import { Geolocation } from '@ionic-native/geolocation';
+import { RequestProvider } from '../providers/request/request';
+import { InputMaskModule } from 'ionic-input-mask';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     InicioPage,
+    OcorrenciaPage,
     ListPage
   ],
   imports: [
     BrowserModule,
+    InputMaskModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -28,6 +33,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     InicioPage,
+    OcorrenciaPage,
     ListPage
   ],
   providers: [
@@ -35,7 +41,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     HTTP,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RequestProvider
   ]
 })
 export class AppModule {}

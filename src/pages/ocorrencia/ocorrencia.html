@@ -7,12 +7,76 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ocorrencia</ion-title>
+    <ion-title>Nova Ocorrência</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background-internal">
+
+  <div *ngIf="status == 'insertOcorrencia'">
+    <h3>Preencha os campos abaixo para registrar a ocorrência.</h3>
+    <ion-list padding>
+      <ion-item class="l_input">
+        <ion-label>Descrição: *</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.descricao" maxlength="255" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Endereço: *</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.endereco" maxlength="255" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Bairro: *</ion-label>
+        <ion-select [(ngModel)]="ocorrencia.bairro" >
+          <ion-option *ngFor="let bairro of bairros" [value]="bairro.descricao">{{bairro.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>CEP: *</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.cep" maxlength="8"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Complemento:</ion-label>
+        <ion-textarea [(ngModel)]="ocorrencia.complemento" maxlength="500"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Latitude: *</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.latitude" maxlength="255" disabled type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Longitude: *</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.longitude" maxlength="255" disabled type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list padding class="l_adjust">
+      <ion-item class="l_input">
+        <ion-label>Tipo de Ocorrência: *</ion-label>
+        <ion-select [(ngModel)]="ocorrencia.tipofoto">
+          <ion-option *ngFor="let tipo of tipos" [value]="tipo.id">{{tipo.descricao}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list class="l_adjust">
+      <ion-item style="background-color: transparent">
+        <button style="height:40px" full ion-button  color="secondary" (click)="salvar()">Salvar <ion-icon name="done" class="l_left"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="status == 'insertFotos'">
+  </div>
 
 </ion-content>

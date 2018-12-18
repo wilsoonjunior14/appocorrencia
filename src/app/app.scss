@@ -20,6 +20,29 @@
   text-align: center;
 }
 
+.l_adjust{
+  margin-top: -35px;
+}
+
+.select-icon-inner{
+  color: white !important;
+}
+
+.l_input{
+  background-color: #00000080;
+  color: white;
+}
+
+.l_input .label{
+  color: white;
+}
+
+.l_footer_list{
+  width: 50%;
+  float: left;
+}
+
+
 .background{
   background-image: url('../assets/imgs/bglogin.png');
 }
@@ -67,7 +90,7 @@
 }
 
 .l_card_profile{
-  height: 60px;
+  height: 120px;
   text-align: left;
 }
 
@@ -93,6 +116,10 @@
 .l_red{
   background-color: #ff7268;
   color: white;
+}
+
+.l-input-field{
+  background-color: transparent;
 }
 
 .l_orange{
