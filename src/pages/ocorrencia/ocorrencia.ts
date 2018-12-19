@@ -5,6 +5,8 @@ import { LoadingController } from 'ionic-angular';
 import { RequestProvider } from '../../providers/request/request';
 import { InputMaskModule } from 'ionic-input-mask';
 import { AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { InicioPage } from '../inicio/inicio';
 
 /**
  * Generated class for the OcorrenciaPage page.
@@ -22,18 +24,24 @@ export class OcorrenciaPage {
 
   bairros: any;
   ocorrencia: any;
+  fotos: any;
   tipos: any;
   status: string= '';
 
-  constructor(public navCtrl: NavController, public requestService: RequestProvider, public navParams: NavParams, public http: HTTP, public loading: LoadingController, public alert: AlertController) {
+  constructor(public navCtrl: NavController, public requestService: RequestProvider,
+    public navParams: NavParams, public http: HTTP, public loading: LoadingController, public alert: AlertController, private camera: Camera) {
+
+    var usuario = JSON.parse(sessionStorage.getItem("usuario"));
 
     this.requestService.getBairros();
 
     let load = this.loading.create({content: 'Aguarde...'});
 
-    this.ocorrencia = {};
+    this.ocorrencia = {enderecoGPS:'', complemento: '', idusuario: usuario.id};
     this.ocorrencia.latitude = sessionStorage.getItem("latitude");
     this.ocorrencia.longitude = sessionStorage.getItem("longitude");
+
+    this.fotos = [];
     load.present();
 
     var result = requestService.getBairros();
@@ -51,9 +59,60 @@ export class OcorrenciaPage {
       const alerta = this.alert.create({title: 'Aviso', subTitle: check.mensagem, buttons: ['OK']});
       alerta.present();
     }else{
+
+      var result = this.requestService.addOcorrencia(this.ocorrencia);
+      var load = this.loading.create({content: 'Aguarde'});
+      load.present();
+      result.then((data) => {
+        this.ocorrencia = JSON.parse(data.data);
+
+        if( this.ocorrencia.id != undefined ){
+          var alerta = this.alert.create({title: 'Aviso', subTitle: 'Ocorrência cadastrada com sucesso! Agora, você pode anexar fotos ou não referente a ocorrência.', buttons: ['OK']});
+          alerta.present();
+        }
+
+        load.dismiss();
+      });
+
       this.status = 'insertFotos';
-      console.log(this.ocorrencia);
+
     }
+  }
+
+  capturar(){
+    const options = {
+      quality: 100,
+      targetWidth: 500,
+      targetHeight: 500,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then((data)=>{
+      let img = data;
+      let id = this.fotos.length;
+
+      this.requestService.enviarFoto({img: img, descricao: '', ocorrencia_id: this.ocorrencia.id})
+      .then((data)=>{
+        let foto = JSON.parse(data.data);
+        foto.img = this.requestService.image(foto.nome);
+        this.fotos.push(foto);
+      });
+
+    })
+  }
+
+  removeFoto(image){
+    this.fotos = this.fotos.filter((item)=>{
+      return item.id != image.id;
+    });
+  }
+
+  finalizar(){
+    const alerta = this.alert.create({title: 'Aviso', subTitle: 'Ocorrência registrada com sucesso!', buttons: ['OK']});
+    alerta.present();
+    this.navCtrl.setRoot(InicioPage);
   }
 
   validar(){

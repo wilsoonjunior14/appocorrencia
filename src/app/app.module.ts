@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { InicioPage } from '../pages/inicio/inicio';
 import { ListPage } from '../pages/list/list';
 import { OcorrenciaPage } from '../pages/ocorrencia/ocorrencia';
+import { ConsultarPage } from '../pages/consultar/consultar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,6 +15,7 @@ import { HTTP } from '@ionic-native/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { RequestProvider } from '../providers/request/request';
 import { InputMaskModule } from 'ionic-input-mask';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { InputMaskModule } from 'ionic-input-mask';
     HomePage,
     InicioPage,
     OcorrenciaPage,
+    ConsultarPage,
     ListPage
   ],
   imports: [
@@ -34,6 +37,7 @@ import { InputMaskModule } from 'ionic-input-mask';
     HomePage,
     InicioPage,
     OcorrenciaPage,
+    ConsultarPage,
     ListPage
   ],
   providers: [
@@ -41,6 +45,7 @@ import { InputMaskModule } from 'ionic-input-mask';
     SplashScreen,
     HTTP,
     Geolocation,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RequestProvider
   ]

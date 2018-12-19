@@ -5,6 +5,7 @@ import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { OcorrenciaPage } from '../ocorrencia/ocorrencia';
+import { ConsultarPage } from '../consultar/consultar';
 
 /**
  * Generated class for the InicioPage page.
@@ -58,6 +59,10 @@ export class InicioPage {
     }else{
       this.navCtrl.push(OcorrenciaPage);
     }
+  }
+
+  consultar(){
+    this.navCtrl.push(ConsultarPage);
   }
 
 

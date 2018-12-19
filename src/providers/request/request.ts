@@ -10,7 +10,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RequestProvider {
 
-  URL: string = "http://192.168.5.86/participasol/";
+  SERVER: string = "http://192.168.5.86";
+  URL: string = this.SERVER+"/participasol/";
+  IMAGE: string = this.SERVER+"/FOTOS/";
 
   constructor(public http: HTTP) {
   }
@@ -25,6 +27,22 @@ export class RequestProvider {
 
   getTiposOcorrencia(){
     return this.http.get(this.URL+"tipoFoto/buscaTipos", {}, {});
+  }
+
+  addOcorrencia(ocorrencia){
+    return this.http.post(this.URL+"ocorrencia/addOcorrencia", ocorrencia, {});
+  }
+
+  enviarFoto(foto){
+    return this.http.post(this.URL+"fotos/enviarfotos", foto, {});
+  }
+
+  image(name){
+    return this.IMAGE+name;
+  }
+
+  getOcorrencias(data){
+    return this.http.post(this.URL+"ocorrencia/ocorrenciasUsuario", data, {});
   }
 
 }
