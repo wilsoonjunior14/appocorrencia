@@ -24,7 +24,6 @@
   background-color: green !important;
   color: white !important;
   font-size: 14px !important;
-  after: '(Salvar)'
 }
 
 .title{
@@ -38,6 +37,13 @@
 
 .select-icon-inner{
   color: white !important;
+}
+
+.l-description-photo{
+  margin-top: -35px;
+  color: white;
+  text-align: center;
+  font-size: 38px;
 }
 
 .l_input{
@@ -106,13 +112,22 @@
   text-align: left;
 }
 
+.l-direita{
+  float: right;
+  margin-top: -35px;
+}
+
+.l-item-sublinhado{
+  border-bottom: 1px solid lightgray !important;
+}
+
 .l_right{
-  margin-left: 15px;
+  margin: 15px 15px 15px 0;
   font-size: 1.8em;
 }
 
 .l_left{
-  margin-right: 15px;
+  margin: 15px;
   font-size: 1.8em;
 }
 
@@ -150,7 +165,7 @@
 }
 
 .l_icone_card{
-  font-size: 2.5em !important;
+  font-size: 3.5em !important;
 }
 
 .l_footer{

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, AlertController } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import { RequestProvider } from '../../providers/request/request';
+import { Vibration } from '@ionic-native/vibration';
 
 /**
  * Generated class for the ConsultarPage page.
@@ -20,12 +21,17 @@ export class ConsultarPage {
 
   ocorrencias: any;
   listaOcorrencias: any;
+  ocorrencia: any;
+  fotos: any;
   status: string = '';
   pesquisar: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loading: LoadingController, public alert: AlertController, public http: HTTP, public requestService: RequestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loading: LoadingController, public alert: AlertController, public http: HTTP,
+    public requestService: RequestProvider, public vibration: Vibration) {
 
     this.ocorrencias = [];
+    this.fotos = [];
+    this.ocorrencia = {};
     this.status = 'ocorrencias';
 
     var usuario = JSON.parse(sessionStorage.getItem("usuario"));
@@ -42,6 +48,58 @@ export class ConsultarPage {
     })
     .catch((err)=> { load.dismiss(); });
 
+  }
+
+  search(event: any){
+
+    this.pesquisar = event.target.value;
+    this.pesquisar = this.pesquisar.toLowerCase();
+
+    if( this.pesquisar.length == 0 ){
+      this.listaOcorrencias = this.ocorrencias;
+    }else{
+
+      let length = this.pesquisar.length;
+      this.listaOcorrencias = this.ocorrencias.filter((item)=>{
+
+        if( item.endereco.substring(0, length).toLowerCase().localeCompare(this.pesquisar) == 0 ){
+          return true;
+        }
+
+        return false;
+
+      });
+
+    }
+
+  }
+
+  voltar(){
+    this.status = 'ocorrencias';
+  }
+
+  buscaFotos(ocorrencia){
+    this.ocorrencia = ocorrencia;
+    this.status = 'fotos';
+
+    var load = this.loading.create({content: 'Aguarde...'});
+    load.present();
+    var result = this.requestService.getFotosOcorrencia({id: ocorrencia.id});
+    result.then((data) => {
+      this.fotos = JSON.parse(data.data);
+      this.fotos.forEach((item)=>{
+        item.nome = this.requestService.image(item.nome);
+      });
+      load.dismiss();
+
+      if( this.fotos.length == 0 ){
+        const alerta = this.alert.create({title: 'Aviso', subTitle: 'Ocorrência não possui fotos', buttons: ['OK']});
+        alerta.present();
+        this.vibration.vibrate([1000,1000,1000]);
+        this.status = 'ocorrencias';
+      }
+
+    });
   }
 
 

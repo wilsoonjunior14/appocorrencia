@@ -20,18 +20,13 @@
 
 <ion-grid>
   <ion-row>
-    <ion-col col-10>
+    <ion-col col-12>
+
       <ion-list padding>
         <ion-item class="l_input">
-          <ion-label>Pesquisar: </ion-label>
-          <ion-input [(ngModel)]="pesquisar" maxlength="255" type="text"></ion-input>
+          <ion-searchbar (ionInput)="search($event)" placeholder="Pesquisar" ></ion-searchbar>
         </ion-item>
       </ion-list>
-    </ion-col>
-    <ion-col col-2>
-      <button padding style="margin-top: 16px; height: 43px" ion-button color="dark"><ion-icon name="search"></ion-icon></button>
-    </ion-col>
-    <ion-col col-12>
 
       <ion-card *ngFor="let ocorrencia of listaOcorrencias">
         <ion-card-header *ngIf="ocorrencia.status_id == 1" class="l_yellow">
@@ -65,15 +60,30 @@
             <ion-col col-12><b>Tipo de Ocorrência:</b> {{ocorrencia.tipo_foto.descricao}}</ion-col>
           </ion-row>
 
-          <ion-row>
-            <ion-col col-6 style="text-align: center">
-              <button ion-button color="dark"><ion-icon name="photos" class="l_right"></ion-icon>Fotos</button>
+          <!--<ion-row>
+            <ion-col col-4 style="text-align: center">
+              <button ion-button color="dark" ><ion-icon name="photos" class="l_right"></ion-icon>Fotos</button>
             </ion-col>
 
-            <ion-col col-6 style="text-align: center">
+            <ion-col col-4 style="text-align: right">
+            </ion-col>
+
+            <ion-col col-4 style="text-align: center">
               <button ion-button color="primary"><ion-icon name="list-box" class="l_right"></ion-icon>Mensagens</button>
             </ion-col>
-          </ion-row>
+          </ion-row>-->
+
+          <ion-list>
+            <ion-item (click)="buscaFotos(ocorrencia)" class="l-item-sublinhado">
+              <ion-col col-11><ion-icon name="photos" class="l_right" style="color: gray"></ion-icon>Fotos</ion-col>
+              <ion-col col-1><ion-icon class="l-direita" name="arrow-forward"></ion-icon></ion-col>
+            </ion-item>
+            <ion-item class="l-item-sublinhado">
+              <ion-col col-11><ion-icon name="list-box" class="l_right" style="color: blue"></ion-icon> Mensagens</ion-col>
+              <ion-col col-1><ion-icon class="l-direita" name="arrow-forward"></ion-icon></ion-col>
+            </ion-item>
+          </ion-list>
+
         </ion-card-content>
       </ion-card>
 
@@ -81,6 +91,48 @@
   </ion-row>
 </ion-grid>
 
+</div>
+
+
+<div *ngIf="status == 'fotos'">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+          <button padding (click)="voltar()" ion-button color="dark"><ion-icon name="arrow-round-back" class="l_right"></ion-icon>Voltar</button>
+      </ion-col>
+
+      <ion-col col-12 *ngFor="let foto of fotos">
+        <ion-card>
+          <img src="{{foto.nome}}" />
+          <div class="card-title l-description-photo">{{ocorrencia.descricao}}</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+
+<div *ngIf="status == 'acompanhamentos'">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+          <button padding (click)="voltar()" ion-button color="dark"><ion-icon name="arrow-round-back" class="l_right"></ion-icon>Voltar</button>
+      </ion-col>
+
+      <ion-col col-12>
+        <ion-card>
+          <ion-card-content>
+            <span class="card-title"></span>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<div *ngIf="status == 'mapa'">
+  <div id="mapid" style="width: 600px; height: 400px;"></div>
 </div>
 
 

@@ -45,4 +45,8 @@ export class RequestProvider {
     return this.http.post(this.URL+"ocorrencia/ocorrenciasUsuario", data, {});
   }
 
+  getFotosOcorrencia(data){
+    return this.http.post(this.URL+"ocorrencia/fotos", data, {});
+  }
+
 }

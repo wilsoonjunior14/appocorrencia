@@ -16,6 +16,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { RequestProvider } from '../providers/request/request';
 import { InputMaskModule } from 'ionic-input-mask';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     HTTP,
     Geolocation,
     Camera,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RequestProvider
   ]
