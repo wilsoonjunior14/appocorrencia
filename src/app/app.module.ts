@@ -8,6 +8,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 import { ListPage } from '../pages/list/list';
 import { OcorrenciaPage } from '../pages/ocorrencia/ocorrencia';
 import { ConsultarPage } from '../pages/consultar/consultar';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { Vibration } from '@ionic-native/vibration';
     InicioPage,
     OcorrenciaPage,
     ConsultarPage,
-    ListPage
+    ListPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { Vibration } from '@ionic-native/vibration';
     InicioPage,
     OcorrenciaPage,
     ConsultarPage,
-    ListPage
+    ListPage,
+    TabsPage
   ],
   providers: [
     StatusBar,

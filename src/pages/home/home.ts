@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { InicioPage } from '../inicio/inicio';
+import { TabsPage } from '../tabs/tabs';
 import { HTTP } from '@ionic-native/http';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -46,7 +47,7 @@ export class HomePage {
           msg.present();
         }else{
           sessionStorage.setItem("usuario", JSON.stringify(response.data));
-          this.navCtrl.setRoot(InicioPage);
+          this.navCtrl.setRoot(TabsPage);
         }
       })
       .catch((error)=>{ load.dismiss(); });

@@ -22,6 +22,7 @@ export class ConsultarPage {
   ocorrencias: any;
   listaOcorrencias: any;
   ocorrencia: any;
+  acompanhamentos: any;
   fotos: any;
   status: string = '';
   pesquisar: string = '';
@@ -32,6 +33,7 @@ export class ConsultarPage {
     this.ocorrencias = [];
     this.fotos = [];
     this.ocorrencia = {};
+    this.acompanhamentos = [];
     this.status = 'ocorrencias';
 
     var usuario = JSON.parse(sessionStorage.getItem("usuario"));
@@ -99,6 +101,25 @@ export class ConsultarPage {
         this.status = 'ocorrencias';
       }
 
+    });
+  }
+
+  buscaAcompanhamentos(ocorrencia){
+    this.ocorrencia = ocorrencia;
+    this.status = 'acompanhamentos';
+    var result = this.requestService.getAcompanhamentos({id: this.ocorrencia.id});
+
+    const load = this.loading.create({content: 'Aguarde...'});
+    load.present();
+    result.then((data) => {
+      load.dismiss();
+      this.acompanhamentos = JSON.parse(data.data);
+
+      if( this.acompanhamentos.length == 0 ){
+        const alert = this.alert.create({title: 'Aviso', subTitle: 'Ocorrência não possui acompanhamentos!', buttons: ['OK']});
+        alert.present();
+        this.status = 'ocorrencias';
+      }
     });
   }
 

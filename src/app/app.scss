@@ -15,6 +15,15 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.tabbar{
+  background-color: black !important;
+}
+
+.tab-button, .tab-button-icon{
+  color: white !important;
+}
+
+
 .cordova-camera-capture button{
   position: absolute !important;
   top: 400px !important;
@@ -40,7 +49,6 @@
 }
 
 .l-description-photo{
-  margin-top: -35px;
   color: white;
   text-align: center;
   font-size: 38px;

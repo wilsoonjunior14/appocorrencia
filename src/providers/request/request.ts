@@ -49,4 +49,8 @@ export class RequestProvider {
     return this.http.post(this.URL+"ocorrencia/fotos", data, {});
   }
 
+  getAcompanhamentos(data){
+    return this.http.get(this.URL+"acompanhamento/buscaAcompanhamento/"+data.id, {}, {});
+  }
+
 }
