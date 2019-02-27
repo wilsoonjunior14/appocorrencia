@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class RequestProvider {
 
   SERVER: string = "http://192.168.5.86";
-  URL: string = this.SERVER+"/participasol/";
+  URL: string = this.SERVER+"/servicosPMS/";
   IMAGE: string = this.SERVER+"/FOTOS/";
 
   constructor(public http: HTTP) {
