@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InicioPage } from '../inicio/inicio';
 import { OcorrenciaPage } from '../ocorrencia/ocorrencia';
 import { ConsultarPage } from '../consultar/consultar';
+import { EventosPage } from '../eventos/eventos';
 
 /**
  * Generated class for the TabsPage page.
@@ -21,6 +22,7 @@ export class TabsPage {
   tab1Root: any = InicioPage;
   tab2Root: any = OcorrenciaPage;
   tab3Root: any = ConsultarPage;
+  tab5Root: any = EventosPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

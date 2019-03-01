@@ -46,11 +46,15 @@ export class RequestProvider {
   }
 
   getFotosOcorrencia(data){
-    return this.http.post(this.URL+"ocorrencia/fotos", data, {});
+    return this.http.post(this.URL+"ocorrencia/fotosOcorrencia", data, {});
   }
 
   getAcompanhamentos(data){
     return this.http.get(this.URL+"acompanhamento/buscaAcompanhamento/"+data.id, {}, {});
+  }
+
+  getEventos(){
+    return this.http.get(this.URL+"eventos/getEventos", {}, {});
   }
 
 }

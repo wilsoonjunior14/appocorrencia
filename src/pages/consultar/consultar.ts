@@ -86,7 +86,7 @@ export class ConsultarPage {
 
     var load = this.loading.create({content: 'Aguarde...'});
     load.present();
-    var result = this.requestService.getFotosOcorrencia({id: ocorrencia.id});
+    var result = this.requestService.getFotosOcorrencia({id_ocorrencia: ocorrencia.id});
     result.then((data) => {
       this.fotos = JSON.parse(data.data);
       this.fotos.forEach((item)=>{

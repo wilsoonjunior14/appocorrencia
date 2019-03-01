@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { OcorrenciaPage } from '../pages/ocorrencia/ocorrencia';
 import { ConsultarPage } from '../pages/consultar/consultar';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EventosPage } from '../pages/eventos/eventos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { Vibration } from '@ionic-native/vibration';
     OcorrenciaPage,
     ConsultarPage,
     ListPage,
+    EventosPage,
     TabsPage
   ],
   imports: [
@@ -42,6 +44,7 @@ import { Vibration } from '@ionic-native/vibration';
     OcorrenciaPage,
     ConsultarPage,
     ListPage,
+    EventosPage,
     TabsPage
   ],
   providers: [

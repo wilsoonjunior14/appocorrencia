@@ -93,10 +93,14 @@
 
 .background{
   background-image: url('../assets/imgs/bglogin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .background-internal{
   background-image: url('../assets/imgs/bginterno.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .ion-footer{
